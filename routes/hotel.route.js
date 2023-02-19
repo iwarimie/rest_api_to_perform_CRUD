@@ -1,10 +1,10 @@
 const userRole = require('../models/user.model')
-//const {authorizeAdmin, authorizeGuest} = require('../middleware/test.middleware')
 const router = require('express').Router()
+const {  validate } = require('../middleware/test.middleware')
 
 const { createHotel, updateHotel, deleteHotel, fetchOneBook, fetchMany} = require('../controllers/hotel.controller')
 
-router.post('/', createHotel)
+router.post('/', validate, createHotel)
 router.patch('/:id', updateHotel)
 router.delete('/:id', deleteHotel)
 router.get('/:id', fetchOneBook)

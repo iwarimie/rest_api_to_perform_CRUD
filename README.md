@@ -84,4 +84,5 @@ Example
 DELETE /api/v1/hotel/PF6MflPDcuhWobZcgmJy5
 Authorization: Bearer <YOUR TOKEN>
 
-##Authorization coming soon...
+##Validation For POST Request
+Added Validation for POST request using JOI library
