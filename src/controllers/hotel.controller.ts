@@ -1,8 +1,9 @@
-const HotelService = require('../services/hotel.service');
+import { Request, Response} from 'express';
+import HotelService from '../services/hotel.service';
 
 class HotelController{
     //create hotel
-    async createHotel(req, res){
+    async createHotel(req: Request, res: Response){
         const reqBody = req.body
         console.log(reqBody)
 //a. check if hotel is in db, if present say present
@@ -26,7 +27,7 @@ res.status(201).json({
     }
     
 //update hotel
-async updateHotel(req, res){
+async updateHotel(req: Request, res: Response){
     const hotelId = req.params.id
     const updateData = req.body 
     //fetch the hotel you want to edit & check if it is in the db: if it exist ok ? throw error
@@ -59,7 +60,7 @@ if(!existingHotel) return res.status(404).json({
 }
     
 //delete hotel
-    async deleteHotel(req, res){
+    async deleteHotel(req: Request, res: Response){
         const hotelId = req.params.id
         // const updateData = req.body 
         //fetch the hotel you want to delete & check if it is in the db: if it exist ok ? throw error
@@ -83,7 +84,7 @@ if(!existingHotel) return res.status(404).json({
     
     
     //fetch a single hotel
-    async fetchOneBook(req, res){
+    async fetchOneBook(req: Request, res: Response){
         const hotelId = req.params.id
         //fetch the hotel using id & check if it is in the db: if it exist ok ? throw error
     const existingHotel = await HotelService.fetchOne({
@@ -101,7 +102,7 @@ if(!existingHotel) return res.status(404).json({
     })
     }
     //fetch all hotel
-    async fetchMany(req, res){
+    async fetchMany(req: Request, res: Response){
         const fetchedHotels = await HotelService.fetch({})
 
         res.status(200).json({
@@ -112,4 +113,4 @@ if(!existingHotel) return res.status(404).json({
     }
 }
 
-module.exports = new HotelController();
+export default new HotelController();

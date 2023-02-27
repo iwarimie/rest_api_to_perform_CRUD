@@ -1,16 +1,16 @@
-const express = require('express')
-const mongoose = require('mongoose')
+import express from 'express';
+import mongoose from 'mongoose';
 const app = express()
-const router = require('./routes/index.route')
-
-require('dotenv').config()
+import router from './routes/index.route';
+import dotenv from 'dotenv';
+dotenv.config();
 
 app.use(express.urlencoded({extended: false}))
 app.use(express.json())
 
 app.use('/api/v1', router)
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGODB_URI!)
 .then(() => {
     console.log('Connected to your database succcessfully')
 })

@@ -1,4 +1,5 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
+import IHotel from '../interphases/hotel.interphase';
 
 const Hotel = new mongoose.Schema({
     name: {
@@ -22,4 +23,4 @@ const Hotel = new mongoose.Schema({
 })
 
 const HotelModel = mongoose.model('Hotel', Hotel);
-module.exports = HotelModel;
+export default HotelModel;
